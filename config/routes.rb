@@ -4,13 +4,13 @@ Rails.application.routes.draw do
 
   # 会員側のルーティング設定
     root to: "public/homes#top"
-    resources :items
+    # resources :items, only:[:new]
 
   # 管理者側のルーティング設定
   namespace :admin do
     root to: "homes#top"
     get "/home/about" => "admin/homes#about", as: "about"
-    resources :items
+    resources :items, only:[:index, :new, :create, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

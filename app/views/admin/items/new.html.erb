@@ -1,0 +1,40 @@
+<div class='container'>
+<div class='row'>
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+<h1>商品新規登録</h1>
+
+<%= form_with model: @item, url: root_path, method: :patch do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "商品画像" %>
+    <%= f.file_field :profile_image,  accept: "image/*", class:"form-control-file" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "商品名" %>
+    <%= f.text_field :name, placeholder: "商品名", class:"form-control name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "商品説明" %>
+    <%= f.text_area :introductiony, placeholder: "ここに説明文を記述します", rows:8, class:"form-control introduction" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.select :genre_id, options_for_select([ ["ケーキ","1"] , ["プリン","2"] , ["焼き菓子","3"] , ["キャンディー","4"] ]), options = { include_blank: "--選択してください--" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "税抜価格" %>
+    <%= f.text_field :price, placeholder: 1000, class:"form-control price" %>円
+  </div>
+
+
+  <%= f.submit '新規登録', class:"btn btn-secondary" %>
+
+<% end %>
+
+</div>
+</div>
+</div>
