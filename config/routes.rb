@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'genre/index'
+    get 'genre/create'
+    get 'genre/edit'
+    get 'genre/update'
+  end
   devise_for :customers
   devise_for :admins
 
