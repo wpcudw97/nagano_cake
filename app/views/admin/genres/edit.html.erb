@@ -1,1 +1,14 @@
-<h1>ジャンルの編集画面です</h1>
+<div class='container'>
+  <h3>ジャンル編集</h3>
+  <div class='row'>
+    <div class="col-sm-30 col-lg-5 px-sm-0 mx-auto">
+      <%= form_with model: @genre, url: admin_genre_path do |f| %>
+        <div class="form-group row mb-3">
+          <%= f.label :name, "ジャンル名", class: "col-sm-4 col-form-label" %>
+          <%= f.text_field :name, id:"genre_name" %>
+          <%= f.submit '変更を保存', class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
