@@ -1,8 +1,8 @@
 <div class='container'>
   <h3>商品詳細</h3>
   <div class='row'>
+    <%= image_tag @item.get_item_image(300,600) %>
     <div class="col-sm-30 col-lg-5 px-sm-0 mx-auto">
-        <%= image_tag @item.get_item_image(100,100) %>
       <table class="table table-borderless">
         <thead>
           <tr>
@@ -31,9 +31,11 @@
           </tr>
         </thead>
       </table>
+
       <div class="text-center">
         <%= link_to '編集する',  edit_admin_item_path(@item.id), class: "btn btn-success" %>
       </div>
+
     </div>
   </div>
 </div>
