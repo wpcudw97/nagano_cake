@@ -17,18 +17,36 @@
         <%= link_to "Nakano_Cake", root_path, class:"navbar-brand" %>
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
-            <li>
-              <%= link_to "About", root_path, class:"nav-link text-light" %>
-            </li>
-            <li>
-              <%= link_to "商品一覧", root_path, class:"nav-link text-light" %>
-            </li>
-            <li>
-              <%= link_to "新規登録", new_admin_session_path, class:"nav-link text-light" %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_admin_registration_path, class:"nav-link text-light" %>
-            </li>
+            <% if admin_signed_in? %>
+               <li>
+                <%= link_to "商品一覧", root_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "会員一覧", root_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "注文履歴一覧", new_admin_session_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "ジャンル一覧", admin_genres_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_admin_sessionpath, method:"delete", class:"nav-link text-light" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "About", admin_about_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "商品一覧", admin_items_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "新規登録", new_admin_session_path, class:"nav-link text-light" %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_admin_registration_path, class:"nav-link text-light" %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # 管理者側のルーティング設定
   namespace :admin do
     root to: "homes#top"
-    get "/home/about" => "admin/homes#about", as: "about"
+    get "home/about" => "homes#about", as: "about"
     resources :items, only:[:index, :new, :create, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
   end
