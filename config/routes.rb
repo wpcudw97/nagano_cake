@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   # 会員側のルーティング設定
-    root to: "public/homes#top"
+  root to: "public/homes#top"
     # resources :items, only:[:new]
 
   # 管理者側のルーティング設定
