@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # 会員側のルーティング設定
   root to: "public/homes#top"
+  get "about" => "public/homes#about", as: "about"
     # resources :items, only:[:new]
 
   # 管理者側のルーティング設定
