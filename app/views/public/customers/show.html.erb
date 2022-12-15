@@ -1,25 +1,57 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <div class="sidebar_content">
-        <div class="sidebar_fixed">
-          <table class='table table-hover table-inverse'>
-            <thead>
-              <tr>
-                <th>ジャンル検索</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><%= @customer.genre.name %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="col">
+<div class='container'>
+  <h3>マイページ</h3>
+  <div class='row'>
+    <h5 class="col-2">登録情報</h5>
+    <p class="col-6"><%= link_to '編集する',  edit_customer_path, class: "btn btn-success d-grid gap-2 col-3 mx-auto" %></p>
+  </div>
 
+  <div class="row" >
+    <div class="col mx-auto">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>氏名</th>
+            <td><%= @customer.last_name %><%= @customer.first_name %></td>
+          </tr>
+
+          <tr>
+            <th>カナ</th>
+            <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+          </tr>
+
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+
+          <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+
+          <tr>
+            <th>電話番号</th>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+
+           <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+        </thead>
+      </table>
     </div>
   </div>
+
+  <div class='row'>
+    <h5 class="col-2">配送先</h5>
+    <p class="col-6"><%= link_to '一覧を見る',  edit_customer_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto" %></p> <!-- 配送先のrootingを作成後path修正 -->
+  </div>
+
+  <div class='row'>
+    <h5 class="col-2">注文履歴</h5>
+    <p class="col-6"><%= link_to '一覧を見る',  edit_customer_path, class: "btn btn-primary d-grid gap-2 col-3 mx-auto" %></p><!-- 注文履歴のrootingを作成後path修正 -->
+  </div>
+
+
 </div>
