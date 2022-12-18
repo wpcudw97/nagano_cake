@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'customer/show'
-    get 'customer/edit'
-    get 'customer/update'
-    get 'customer/unsubscribe'
-    get 'customer/withdraw'
-  end
+
   devise_for :customers,controllers: {
     sessions: "public/sessions",
     passwords: "public/passwords",
