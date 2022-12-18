@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "customers/information/edit" => "public/customers#edit", as: "edit_customer"
   patch "customers/information" => "public/customers#update"
   get "customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe_customer"
-  get "customers/withdraw" => "public/customers#withdraw", as: "withdraw_customer"
+  patch "customers/withdraw" => "public/customers#withdraw"
     # resources :items, only:[:new]
 
   # 管理者側のルーティング設定
