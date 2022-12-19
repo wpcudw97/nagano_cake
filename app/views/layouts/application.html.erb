@@ -32,33 +32,31 @@
                   <%= link_to "ジャンル一覧",  admin_genres_path, class:"nav-link text-light" %>
                 </li>
                 <li>
-                  <%= link_to "ログアウト", destroy_admin_session_session, method:"delete", class:"nav-link text-light" %>
-              </li>
-            <% else %>
-            <!---->
+                  <%= link_to "ログアウト", destroy_admin_session_path, method:"delete", class:"nav-link text-light" %>
+                </li>
+              <% else %>
               <li>
                 <%= link_to "About", admin_about_path, class:"nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "商品一覧",  admin_items_path, class:"nav-link text-light" %>
+                <%= link_to "商品一覧", admin_items_path, class:"nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "新規登録", ew_admin_registration_path, class:"nav-link text-light" %>
+                <%= link_to "新規登録", new_admin_registration_path, class:"nav-link text-light" %>
               </li>
               <li>
                 <%= link_to "ログイン", new_admin_session_path, class:"nav-link text-light" %>
               </li>
-              <!---->
-
-            end
-               <li>
+              <% end %>
+            <% elsif customer_signed_in? %>
+              <li>
                 <%= link_to "マイページ", customer_path, class:"nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "商品一覧", root_path, class:"nav-link text-light" %>
+                <%= link_to "商品一覧", customer_path, class:"nav-link text-light" %>
               </li>
               <li>
-                <%= link_to "カート", root_path, class:"nav-link text-light" %>
+                <%= link_to "カート", customer_path, class:"nav-link text-light" %>
               <li>
                 <%= link_to "ログアウト", destroy_customer_session, method:"delete", class:"nav-link text-light" %>
               </li>
