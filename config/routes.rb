@@ -19,7 +19,10 @@ Rails.application.routes.draw do
   patch "customers/information" => "public/customers#update"
   get "customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe_customer"
   patch "customers/withdraw" => "public/customers#withdraw"
-    # resources :items, only:[:new]
+  scope module: :public do
+    get "items" => "items#index"
+    get "item" => "items#show"
+  end
 
   # 管理者側のルーティング設定
   namespace :admin do
