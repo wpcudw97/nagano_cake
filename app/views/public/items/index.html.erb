@@ -1,16 +1,16 @@
 <div class='container'>
-  <h3>商品一覧</h3>
+  <div class="col">
+    <h3>商品一覧<span class="small">(全<%= @items_count %>件)</span></h3>
+  </div>
   <div class='row'>
-    <div class="col mx-auto">
-      <% @items.each do |item| %>
-      <div class="row row-cols-4">
-        <div class="col">
-          <p><%= image_tag item.get_item_image(300,300) %></p>
-          <p><%= item.name %></p>
-          <p>¥<%= item.price.to_s(:delimited) %>円</p>
-        </div>
+    <% @items.each do |item| %>
+      <div class="col">
+        <%= link_to item_path(item.id) do %>
+          <p><%= image_tag item.get_item_image(200,200) %></p>
+        <% end %>
+        <p><%= item.name %></p>
+        <p>¥<%= item.price.to_s(:delimited) %>円</p>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

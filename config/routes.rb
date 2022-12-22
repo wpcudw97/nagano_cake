@@ -20,8 +20,7 @@ Rails.application.routes.draw do
   get "customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe_customer"
   patch "customers/withdraw" => "public/customers#withdraw"
   scope module: :public do
-    get "items" => "items#index"
-    get "item" => "items#show"
+    resources :items, only:[:index, :show]
   end
 
   # 管理者側のルーティング設定

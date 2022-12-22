@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
+    @items_count = Item.where(@item_id).count
   end
 
   def show
