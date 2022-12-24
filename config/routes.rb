@@ -20,8 +20,11 @@ Rails.application.routes.draw do
   get "customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe_customer"
   patch "customers/withdraw" => "public/customers#withdraw"
   scope module: :public do
-    resources :items, only:[:index, :show]
+    resources :items, only:[:index, :show, :update]
+    resources :cart_items, only:[:index, :update, :destroy, :create]
+    delete "cart_items/destroy_all" => "customers#destroy_all"
   end
+
 
   # 管理者側のルーティング設定
   namespace :admin do
