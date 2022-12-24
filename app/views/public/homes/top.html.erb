@@ -1,13 +1,21 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-       <p>
-        ようこそ、ながのCAKEへ!<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-      </p>
-      <h3>新着商品</h3>
-    </div>
+  <div class="col">
+    <p class="d-flex justify-content-center container " style="margin-top:140px">
+      ようこそ、ながのCAKEへ!<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、<br>
+      購入には会員登録が必要になります。
+    </p>
   </div>
+  <div class='row'>
+    <h2 class="d-flex container" style="margin-top:50px">新着商品</h2>
+    <% @items.first(4).each do |item| %>
+      <div class="col">
+        <p><%= image_tag item.get_item_image(200,200) %></p>
+        <p><%= item.name %></p>
+        <p>¥<%= item.price.to_s(:delimited) %>円</p>
+      </div>
+    <% end %>
+  </div>
+  <p class="text-right"><%= link_to "全ての商品を見る>", items_path %></p>
 </div>
