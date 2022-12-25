@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
   devise_for :customers,controllers: {
     sessions: "public/sessions",
     passwords: "public/passwords",
@@ -28,8 +20,11 @@ Rails.application.routes.draw do
   patch "customers/withdraw" => "public/customers#withdraw"
   scope module: :public do
     resources :items, only:[:index, :show, :update]
-    resources :cart_items, only:[:index, :update, :destroy, :create]
-    delete "cart_items/destroy_all" => "customers#destroy_all"
+    resources :cart_items, only:[:index, :update, :destroy, :create] do
+      collection do
+        delete 'destroy_all'
+      end
+     end
     resources :addresses, only:[:index, :edit, :create, :update ,:destroy]
   end
 
