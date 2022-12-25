@@ -3,13 +3,13 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_one_attached :item_image
 
-  enum is_active: {
-    販売中: true, #販売中
-    販売停止中: false #販売停止中
+  enum is_active: { #販売ステータス
+    販売中: true,
+    販売停止中: false
   }
 
-  def add_tax_price
-    (self.price * 1.10).round
+  def with_tax_price #税込の表示
+    (price * 1.1).floor
   end
 
 
