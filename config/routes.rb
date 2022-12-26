@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'order_details/update'
+  end
+  namespace :admin do
+    get 'orders/show'
+    get 'orders/update'
+  end
   devise_for :customers,controllers: {
     sessions: "public/sessions",
     passwords: "public/passwords",
@@ -36,6 +43,7 @@ Rails.application.routes.draw do
     resources :items, only:[:index, :new, :create, :show, :edit, :update]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
+    resources :orders, only:[:show, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
