@@ -1,14 +1,15 @@
 class Admin::OrdersController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])
-    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @order = Customer.find(params[:id])
+    @orders = CartItem.where(customer_id: current_customer.id)
     @total = 0
+    @postage = 800
   end
 
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to  admin_order_path(order) #パスが違う?
+    redirect_to  admin_order_path(order)
   end
 
   private

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'orders/new'
+    get 'orders/comfirm'
+    get 'orders/complete'
+    get 'orders/create'
+    get 'orders/index'
+    get 'orders/show'
+  end
   namespace :admin do
     get 'order_details/update'
   end
@@ -33,6 +41,12 @@ Rails.application.routes.draw do
       end
      end
     resources :addresses, only:[:index, :edit, :create, :update ,:destroy]
+    resources :orders, only:[:new, :create, :index, :show] do
+      collection do
+         post "comfirm"
+         get "complete"
+      end
+    end
   end
 
 
