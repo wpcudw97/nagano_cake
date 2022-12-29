@@ -1,0 +1,12 @@
+<div class='container'>
+  <h3>注文情報確認</h3>
+  <div class="col">
+    <div class='row'>
+    <%= form_with model: @order, url: complete_orders_path do |f| %>
+      <h4>お届け先</h4>
+      〒<%= @order.postal_code %><%= @order.address %>
+      <div><%= @order.name %></div>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -6,8 +6,8 @@ class Public::OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get comfirm" do
-    get public_orders_comfirm_url
+  test "should get confirm" do
+    get public_orders_confirm_url
     assert_response :success
   end
 

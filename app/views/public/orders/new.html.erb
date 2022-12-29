@@ -1,7 +1,7 @@
 <div class='container'>
   <h3>注文情報入力</h3>
 
-      <%= form_with model: @order, url: orders_path do |f| %>
+      <%= form_with model: @order, url: confirm_orders_path do |f| %>
         <div class="form-group">
           <h4>支払方法</h4>
           <div class="col-sm-2">
@@ -17,7 +17,7 @@
         <div class="form-group">
           <h4>お届け先</h4>
           <div class="col-sm-2">
-            <%= f.radio_button :address, "ご自身の住所" %>
+            <%= f.radio_button :select_address, 0 %>
             <%= f.label :address, "ご自身の住所" %>
           </div>
           <div class="col">
@@ -30,7 +30,7 @@
 
         <div class="form-group">
           <div class="col-sm-3">
-            <%= f.radio_button :address, "登録先住所から選択" %>
+            <%= f.radio_button :select_address, 1 %>
             <%= f.label :address, "登録先住所から選択" %>
           </div>
           <div class="col">
@@ -42,7 +42,7 @@
 
         <div class="form-group">
           <div class="col-sm-2">
-            <%= f.radio_button :address, "新しいお届け先" %>
+            <%= f.radio_button :select_address, 2 %>
             <%= f.label :address, "新しいお届け先" %>
           </div>
           <div class="col">

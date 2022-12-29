@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'orders/new'
-    get 'orders/comfirm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'order_details/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
+
   devise_for :customers,controllers: {
     sessions: "public/sessions",
     passwords: "public/passwords",
@@ -39,11 +25,11 @@ Rails.application.routes.draw do
       collection do
         delete 'destroy_all'
       end
-     end
+    end
     resources :addresses, only:[:index, :edit, :create, :update ,:destroy]
     resources :orders, only:[:new, :create, :index, :show] do
       collection do
-         post "comfirm"
+         post "confirm"
          get "complete"
       end
     end
