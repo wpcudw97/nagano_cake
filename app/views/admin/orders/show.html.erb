@@ -3,7 +3,7 @@
 
   <div class='row'>
     <div class="col">
-      <%= form_with model: @order, url: admin_order_path do |f| %>
+      <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
         <div class="form-group">
           <%= f.label :name, "購入者", class: "col-sm-4 col-form-label" %>
           <%= @order.last_name+@order.first_name %>

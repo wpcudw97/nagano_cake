@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def show
-    @order = Customer.find(params[:id])
+    @order = Order.find(params[:id])
     @orders = CartItem.where(customer_id: current_customer.id)
     @total = 0
     @postage = 800
