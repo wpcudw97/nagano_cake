@@ -1,9 +1,7 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
-    @orders = CartItem.where(customer_id: current_customer.id)
-    @total = 0
-    @postage = 800
+    @order_details = OrderDetail.where(order_id: params[:id])
   end
 
   def update

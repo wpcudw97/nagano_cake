@@ -29,10 +29,24 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
-    redirect_to  confirm_orders_path
+    @cart_items = current_customer.cart_items.all
+
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.amount = cart_item.amount
+      @order_details.price = cart_item.item.price
+      @order_details.making_status = 0
+      @order_details.save!
+    end
+    CartItem.destroy_all
+    redirect_to complete_orders_path
+
   end
 
   def index
+
   end
 
   def show
@@ -43,4 +57,12 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name)
   end
+
+  def cartitem_nill
+    cart_items = current_end_user.cart_items
+    if cart_items.blank?
+      redirect_to cart_items_path
+    end
+  end
+
 end
