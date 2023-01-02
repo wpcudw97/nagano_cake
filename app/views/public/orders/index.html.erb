@@ -22,7 +22,7 @@
               <%= order.address %><br>
               <%= order.name %>
             </td>
-            <td></td>
+            <td><%#<%= order.item.name %></td><!-- 注文した商品の表示方法がわからない -->
             <td><%= order.total_payment %>円</td>
             <td><%= order.status_i18n %></td>
             <td><%= link_to "表示する", order_path(order.id), class:"btn btn-primary" %></td>
