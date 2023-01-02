@@ -1,6 +1,6 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :order
-  belongs_to :item
+  belongs_to :order, optional: true
+  belongs_to :item, optional: true
 
   enum making_status: { #製作ステータス
   can_not_production: 0,

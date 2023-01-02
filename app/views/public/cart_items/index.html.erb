@@ -19,22 +19,22 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
           <% @cart_item = CartItem.find(cart_item.id) %>
-          <%= form_with model: @cart_item, url: cart_item_path(cart_item.id) do |f| %>
-            <tr>
-              <td><%= image_tag cart_item.item.get_item_image(70,100) %>　<%= cart_item.item.name %></td>
-              <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-              <td><%= f.select :amount, [*1..100], value: cart_item.amount %>　<%= f.submit "変更", class: "btn btn-success" %></td>
-              <td><%= cart_item.subtotal.to_s(:delimited)%></td>
-              <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, "data-confirm" => "削除しますか?", class: "btn btn-sm btn-danger" %></td>
-              <% @total+=cart_item.subtotal %>
-            </tr>
-           <% end %>
+            <%= form_with model: @cart_item, url: cart_item_path(cart_item.id) do |f| %>
+              <tr>
+                <td><%= image_tag cart_item.item.get_item_image(70,100) %>　<%= cart_item.item.name %></td>
+                <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+                <td><%= f.select :amount, [*1..100], value: cart_item.amount %>　<%= f.submit "変更", class: "btn btn-success" %></td>
+                <td><%= cart_item.subtotal.to_s(:delimited)%></td>
+                <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, "data-confirm" => "削除しますか?", class: "btn btn-sm btn-danger" %></td>
+                <% @total+=cart_item.subtotal %>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
-
     </div>
   </div>
+
   <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
   <table align="right" height="49.5px" class="table-bordered ">
     <tr>
@@ -42,4 +42,7 @@
       <td width="182px"><%= @total.to_s(:delimited) %></td>
     </tr>
   </table>
+  <div class="d-flex justify-content-center container" style="margin-top:100px">
+    <%= link_to "情報入力へ進む", new_order_path, class: "btn btn-success" %>
+  </div>
 </div>
