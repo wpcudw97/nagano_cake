@@ -15,12 +15,12 @@
         <tbody>
           <% @total = 0 %>
           <% @cart_items.each do |cart_item| %>
+          <% @total+=cart_item.subtotal %>
             <tr>
               <td><%= image_tag cart_item.item.get_item_image(70,100) %>　<%= cart_item.item.name %></td>
               <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
               <td><%= cart_item.amount %></td>
               <td><%= cart_item.subtotal.to_s(:delimited)%></td>
-              <% @total+=cart_item.subtotal %>
             </tr>
           <% end %>
         </tbody>
