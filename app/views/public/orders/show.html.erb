@@ -28,11 +28,10 @@
       <table class="table table-bordered">
         <h5>請求情報</h5>
         <% @total = 0 %>
-        <% @order_details.each do |order_detail| %>
-        <% @total += order_detail.item.with_tax_price %>
+
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td><%= order_detail.item.with_tax_price %></td>
+          <td><%= order.subtotal.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>
@@ -40,9 +39,8 @@
         </tr>
         <tr>
           <th class="table-secondary">ご請求額</th>
-          <td><%= @total + 800 %></td>
+          <td><%= @order.total_payment.to_s(:delimited)%></td>
         </tr>
-        <% end %>
       </table>
 
 
@@ -64,7 +62,7 @@
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= @total %></td> <!-- 繰り返しになる 回避方法は...　-->
+            <td><%= order_detail.subtotal.to_s(:delimited) %></td>
           </tr>
         </tbody>
         <% end %>
