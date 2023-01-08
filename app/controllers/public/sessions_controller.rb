@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :reject_deleted_user, only: [:create]
+
 
  before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -14,10 +16,23 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :postal_code, :address, :telephone_number])
+  def reject_deleted_user
+    @customer=Customer.find_by(email: params[:customer][:email])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == "退会"
+        flash[:notice] = "退会済みの為、再登録が必要です。"
+        redirect_to new_customer_registration_path
+      end
+    end
   end
+
 end
+
+def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :postal_code, :address, :telephone_number])
+end
+
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
