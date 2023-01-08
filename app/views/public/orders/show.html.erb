@@ -31,7 +31,7 @@
 
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td><%= order.subtotal.to_s(:delimited) %></td>
+          <td><%= @order.total_payment - 800 %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>

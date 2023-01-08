@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @customer = current_customer
     @customer.update(is_deleted: true)
-    redirect_to root
+    redirect_to root_path
   end
 
   private
