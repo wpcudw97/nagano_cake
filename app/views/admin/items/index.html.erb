@@ -1,5 +1,10 @@
 <div class='container'>
   <h3>商品一覧</h3>
+  <div class="d-flex justify-content-end container" style="margin-top:-40px">
+    <%= link_to new_admin_item_path do %>
+      <i class="fa fa-plus-circle fa-2x" style="color: black;"></i>
+    <% end %>
+  </div>
 
   <table class='table'>
     <thead>

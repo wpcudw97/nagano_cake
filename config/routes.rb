@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     passwords: "public/passwords",
     registrations: "public/registrations"
   }
-  devise_for :admins,controllers: {
+  devise_for :admin,controllers: {
     sessions: "admin/sessions",
     passwords: "admin/passwords",
     registrations: "admin/registrations"
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   # 管理者側のルーティング設定
   namespace :admin do
     root to: "homes#top"
-    resources :items, only:[:index, :new, :create, :show, :edit, :update]
+    resources :items, only:[:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres, only:[:index, :create, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
     resources :orders, only:[:show, :update]
