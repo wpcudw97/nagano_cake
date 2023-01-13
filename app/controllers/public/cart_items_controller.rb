@@ -16,6 +16,8 @@ class Public::CartItemsController < ApplicationController
         @cart_item.delete
       end
     end
+    @cart_item.save
+    redirect_to cart_items_path
   end
 
   def update
