@@ -20,7 +20,7 @@
             <td>
               〒<%= order.postal_code %><br>
               <%= order.address %><br>
-              <%= order.name %>
+              <%= order.name %> <!-- 名前の逆転 -->
             </td>
             <td>
               <% order.order_details.each do |order_detail| %>

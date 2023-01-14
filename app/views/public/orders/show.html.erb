@@ -12,7 +12,7 @@
             <td>
               〒<%= @order.postal_code %><br>
               <%= @order.address %><br>
-              <%= @order.name %>
+              <%= @order.full_name %>
             </td>
           </tr>
           <tr>
@@ -31,7 +31,7 @@
 
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td><%= @order.total_payment - 800 %></td>
+          <td><%= @order.total_payment - 800 %></td><!-- カンマ入れ方 -->
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>
