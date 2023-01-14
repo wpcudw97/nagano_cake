@@ -15,8 +15,5 @@ enum status: { #注文ステータス
   shipped: 4
 }
 
-  def full_name
-    customer.last_name + customer.first_name
-  end
 
 end

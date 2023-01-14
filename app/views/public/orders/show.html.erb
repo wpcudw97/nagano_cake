@@ -31,11 +31,11 @@
 
         <tr>
           <td class="table-secondary">商品合計</td>
-          <td><%= @order.total_payment - 800 %></td><!-- カンマ入れ方 -->
+          <td><%= (@order.total_payment - @postage).to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="table-secondary">配送料</td>
-          <td>800</td>
+          <td><%= @postage %></td>
         </tr>
         <tr>
           <th class="table-secondary">ご請求額</th>

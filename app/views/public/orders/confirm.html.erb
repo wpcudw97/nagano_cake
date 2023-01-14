@@ -29,7 +29,7 @@
       <table class="table table-bordered">
         <tr>
           <th class="table-secondary">送料</th>
-          <td>800</td>
+          <td><%= @postage %></td>
         </tr>
         <tr>
           <th class="table-secondary">商品合計</th>
@@ -37,7 +37,7 @@
         </tr>
         <tr>
           <th class="table-secondary">請求金額</th>
-          <td><%= @total + 800 %></td><!-- カンマ入れ方 --
+          <td><%= (@total + @postage).to_s(:delimited) %></td>
         </tr>
       </table>
 
