@@ -11,7 +11,10 @@
     <h2 class="d-flex container" style="margin-top:50px">新着商品</h2>
     <% @items.first(4).each do |item| %>
       <div class="col">
-        <p><%= image_tag item.get_item_image(200,200) %></p>
+        <p>
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_item_image(200,200) %></p>
+          <% end %>
         <p><%= item.name %></p>
         <p>¥<%= item.price.to_s(:delimited) %>円</p>
       </div>

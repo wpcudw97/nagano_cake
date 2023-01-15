@@ -15,10 +15,6 @@ class Admin::OrderDetailsController < ApplicationController
     end
     redirect_to admin_order_path(@order_detail.order)
   end
-  #   @order_detail = OrderDetail.find(params[:id])
-  #   @order_detail.update(order_details_params)
-  #   redirect_to admin_order_path(@order_detail.order)
-  # end
 
   private
 
