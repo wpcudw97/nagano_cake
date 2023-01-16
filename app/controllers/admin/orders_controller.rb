@@ -3,6 +3,7 @@ class Admin::OrdersController < ApplicationController
     # @order_details = OrderDetail.where(order_id: params[:id])
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @postage = 800
   end
 
   def update
