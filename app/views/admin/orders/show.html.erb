@@ -32,52 +32,59 @@
           </tr>
         <% end %>
       </table>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                  <th>製作ステータス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @total = 0 %>
+                <% @order_details.each do |order_detail| %>
+                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
+                <% @total += order_detail.subtotal %>
+                <tr>
+                  <td><%= order_detail.item.name %></td>
+                  <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
+                  <td><%= order_detail.amount %></td>
+                  <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+                  <td>
+                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+                    <%= f.submit "更新" , class: "btn btn-success" %>
+                  </td>
+                </tr>
+                <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
 
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th>製作ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @total = 0 %>
-          <% @order_details.each do |order_detail| %>
-          <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id) do |f| %>
-          <% @total += order_detail.subtotal %>
-          <tr>
-            <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
-            <td><%= order_detail.amount %></td>
-            <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-            <td>
-              <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
-              <%= f.submit "更新" , class: "btn btn-success" %>
-            </td>
-          </tr>
-          <% end %>
-          <% end %>
-        </tbody>
-      </table>
-
-      <table align="right", width="350px">
-        <tr>
-          <th>商品合計</th>
-          <td><%= (@order.total_payment - @postage).to_s(:delimited) %>円</td>
-        </tr>
-        <tr>
-          <th>送料</th>
-          <td><%= @postage %>円</td>
-        </tr>
-        <tr>
-          <th>請求金額合計</th>
-          <td><%= @order.total_payment.to_s(:delimited) %>円</td>
-        </tr>
-      </table>
-
+          <div class="col-4">
+            <table class="table table-borderless">
+              <tr>
+                <th>商品合計</th>
+                <td><%= (@order.total_payment - @postage).to_s(:delimited) %>円</td>
+              </tr>
+              <tr>
+                <th>送料</th>
+                <td><%= @postage %>円</td>
+              </tr>
+              <tr>
+                <th>請求金額合計</th>
+                <td><%= @order.total_payment.to_s(:delimited) %>円</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
