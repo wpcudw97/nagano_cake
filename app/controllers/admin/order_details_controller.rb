@@ -1,7 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
-    @order = Order.find(params[:id])
     @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order
     @order_details = @order.order_details.all
     is_updated = true
     if @order_detail.update(order_details_params)
